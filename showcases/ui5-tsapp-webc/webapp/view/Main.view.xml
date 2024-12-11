@@ -6,6 +6,7 @@
   xmlns:mvc="sap.ui.core.mvc"
   xmlns:c="ui5.ecosystem.demo.webctsapp.control"
   xmlns:webc="@ui5/webcomponents"
+  xmlns:webcf="@ui5/webcomponents-fiori"
   core:require="{
     Formatter: 'ui5/ecosystem/demo/webctsapp/model/Formatter',
     iconAI: '@ui5/webcomponents-icons/dist/ai',
@@ -23,18 +24,21 @@
       <core:Icon color="#1873B4" src="sap-icon://sap-ui5" size="2rem" />
     </headerContent>
     <content>
+      <webcf:UserMenu id="menu" opener="booBtn">
+        <webcf:UserMenuItem text="Settings" icon="settings" />
+      </webcf:UserMenu>
       <webc:Panel headerText="Buttons" class="panelSpacing">
         <VBox alignItems="Center" justifyContent="Center" height="100%">
           <webc:Button text="nav to DynamicPage" click=".onNavToDynamicPage" design="Attention" endIcon="slim-arrow-right" class="buttonSpacing" />
           <webc:Button text="nav to Form with Aria support" click=".onNavToForm" design="Attention" endIcon="slim-arrow-right" class="buttonSpacing" />
-          <Button text="Don't press me!" press="onBoo" class="buttonSpacing" />
+          <Button id="booBtn" text="Don't press me!" press=".onBoo" class="buttonSpacing" />
           <webc:Button text="Hello World 123" class="buttonSpacing" />
         </VBox>
       </webc:Panel>
 
       <webc:Panel headerText="Simple Controls" class="panelSpacing">
         <VBox alignItems="Center" justifyContent="Center" height="100%">
-          <webc:Input value="Hello World 123" change="onBoo" />
+          <webc:Input value="Hello World 123" change=".onBoo" />
           <webc:AvatarGroup type="Individual">
             <!-- Example: the default aggregation of the AvatarGroup is called "items"
                  It is not need to explicitly name this aggregation here. -->
@@ -48,7 +52,7 @@
           <webc:Label text="'enabled' poperty of Buttons is propagated from OverflowToolbar:" />
           <webc:Button click=".toggleOverflowToolbarEnabled" text="toggle enabled state" />
           <OverflowToolbar id="overflowToolbar" enabled="false">
-            <Button text="enabled='false'" press="onBoo" class="buttonSpacing" enabled="false" />
+            <Button text="enabled='false'" press=".onBoo" class="buttonSpacing" enabled="false" />
             <webc:Button text="enabled='true'" class="buttonSpacing" enabled="true" />
           </OverflowToolbar>
         </VBox>

@@ -12,6 +12,7 @@ import DatePicker from "@ui5/webcomponents/DatePicker";
 import Input from "@ui5/webcomponents/Input";
 import { AvatarSize } from "@ui5/webcomponents";
 import Token from "@ui5/webcomponents/Token";
+import UserMenu from "@ui5/webcomponents-fiori/UserMenu";
 
 // import icons
 import "@ui5/webcomponents-icons/dist/Assets.js";
@@ -66,9 +67,12 @@ export default class Main extends Controller {
 		this.getOwnerComponent().getRouter().navTo("FormPage");
 	}
 
-	public onBoo(): void {
+	public onBoo = () => {
+		const menu = this.getView()?.byId("menu") as UserMenu;
+		menu.setOpen(true);
+
 		MessageToast.show(`👻`);
-	}
+	};
 
 	public onLiveChange(e: Event): void {
 		MessageToast.show(`🛠️ liveChange: ${e.getParameter("selectedOption").getText()}`, { at: Popup.Dock.CenterCenter });
